@@ -32,8 +32,22 @@ class LoginActivity : AppCompatActivity() {
 
             val email: String = mBinding.email.text.toString().trim()
             val password: String = mBinding.password.text.toString().trim()
+
+            if (email.isEmpty()) {
+                mBinding.email.setError("Field cannot be empty")
+                return@OnClickListener
+
+            }
+            else if (password.isEmpty())
+            {
+                mBinding.password.setError("Field cannot be empty")
+                return@OnClickListener
+
+            }
             var user: User
             user = db.getUser(email,password)
+
+
 
             if (user != null) {
 
